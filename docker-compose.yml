@@ -15,7 +15,7 @@ services:
             - safartick
 
     rabbitmq:
-        image: rabbitmq:3.10-management
+        image: registry.cn-hangzhou.aliyuncs.com/google_containers/rabbitmq:3.10-management
         ports:
             - '5672:5672'
             - '15672:15672'

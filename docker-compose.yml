@@ -1,4 +1,4 @@
-# version: '3.8'
+version: '3.8'
 services:
     app:
         build:
@@ -9,24 +9,24 @@ services:
         depends_on:
             database:
                 condition: service_started
-            # rabbitmq:
-            #     condition: service_healthy
+            rabbitmq:
+                condition: service_healthy
         networks:
             - safartick
 
-    # rabbitmq:
-    #     image: registry.cn-hangzhou.aliyuncs.com/google_containers/rabbitmq:3.10-management
-    #     ports:
-    #         - '5672:5672'
-    #         - '15672:15672'
-    #     healthcheck:
-    #         test: ['CMD', 'rabbitmqctl', 'status']
-    #         interval: 10s
-    #         retries: 5
-    #         start_period: 10s
-    #         timeout: 5s
-    #     networks:
-    #         - safartick
+    rabbitmq:
+        image: registry.cn-hangzhou.aliyuncs.com/google_containers/rabbitmq:3.10-management
+        ports:
+            - '5672:5672'
+            - '15672:15672'
+        healthcheck:
+            test: ['CMD', 'rabbitmqctl', 'status']
+            interval: 10s
+            retries: 5
+            start_period: 10s
+            timeout: 5s
+        networks:
+            - safartick
 
     # database:
     #     image: postgres:14
